@@ -1,0 +1,14 @@
+#!/bin/bash
+SESSION='default'
+
+tmux -2 new-session -d -s $SESSION -n cluster
+
+tmux send-keys -t $SESSION:cluster 'bash' Enter
+tmux split-window -v 'bash'
+
+tmux new-window -t $SESSION -a -n teresa 'bash'
+tmux send-keys -t $SESSION:teresa 'top' Enter
+tmux split-window -h 'bash'
+
+tmux select-window -t $SESSION:0
+tmux -2 attach -t $SESSION

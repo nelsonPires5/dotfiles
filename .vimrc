@@ -65,6 +65,10 @@ set t_Co=256                        " Use 256 colours
 let python_highlight_all=1
 syntax on
 
+
+"""""""""""""""""""" 
+"""""" MAPS
+""""""""""""""""""""
 " Auto-complete window goes away when you’re done with it 
 let g:ycm_autoclose_preview_window_after_completion=1
 " defines a shortcut for goto definition. 
@@ -74,9 +78,18 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " Nerd Tree config
 " Command to ignore some file types
 " let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
-map <leader>b :NERDTreeToggle<CR>
+map <leader>f :NERDTreeToggle<CR>
 
-" Adding utf-8 support to files
+" Navigating in buffers
+map <leader>b :bn<CR>
+map <leader>B :bp<CR>
+
+
+""""""""""""""""""""""
+" Configuring files
+""""""""""""""""""""""
+
+"" Adding utf-8 support to files
 set encoding=utf-8
 
 " Flaggin unecessary whitespace

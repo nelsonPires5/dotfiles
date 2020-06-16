@@ -51,7 +51,7 @@ call vundle#end()                   " required
 set number		            	    " Show line number
 set cursorline                	    " highlight current line
 colorscheme dracula 		        " Defining theme
-" set mouse=a                       " Enable mouse 
+set mouse=a                         " Enable mouse 
 set incsearch                       " Enable real-time search with /
 
 " Powerline status bar
@@ -74,6 +74,7 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " Nerd Tree config
 " Command to ignore some file types
 " let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+map <leader>b :NERDTreeToggle<CR>
 
 " Adding utf-8 support to files
 set encoding=utf-8

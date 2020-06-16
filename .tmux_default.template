@@ -1,14 +1,21 @@
 #!/bin/bash
 SESSION='default'
 
-tmux -2 new-session -d -s $SESSION -n cluster
+tmux -2 new-session -d -s $SESSION -n general-purpose
 
-tmux send-keys -t $SESSION:cluster 'bash' Enter
-tmux split-window -v 'bash'
+# tmux send-keys -t $SESSION:general-purpose 'bash' Enter
+# tmux split-window -v 'bash'
 
-tmux new-window -t $SESSION -a -n teresa 'bash'
-tmux send-keys -t $SESSION:teresa 'top' Enter
-tmux split-window -h 'bash'
+# tmux new-window -t $SESSION -a -n teresa 'bash'
+# tmux send-keys -t $SESSION:teresa 'top' Enter
+# tmux split-window -h 'bash'
+
+tmux new-window -t $SESSION -a -n docker
+tmux split-window -h 'htop'
+
+tmux new-window -t $SESSION -a -n dev
+
+tmux new-window -t $SESSION -a -n ide 'vim .'
 
 tmux select-window -t $SESSION:0
 tmux -2 attach -t $SESSION

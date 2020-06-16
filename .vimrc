@@ -83,7 +83,7 @@ map <leader>f :NERDTreeToggle<CR>
 " Navigating in buffers
 map <leader>b :bn<CR>
 map <leader>B :bp<CR>
-
+nnoremap <silent><expr><leader>b printf(":\<C-U>%s\n", v:count ? 'buffer' . v:count : 'bnext')
 
 """"""""""""""""""""""
 " Configuring files

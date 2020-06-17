@@ -4,3 +4,4 @@ Comment=Qtile Session
 Exec=qtile
 Type=Application
 Keywords=wm;tiling
+# colocar na pasta usr/share/xsessions

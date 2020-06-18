@@ -18,6 +18,7 @@
 *.color15:    #E6E6E6
 
 !! Appearance
+urxvt.background: [90]#282A36
 urxvt.termName: rxvt-unicode
 urxvt.scrollBar: false
 

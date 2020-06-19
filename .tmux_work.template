@@ -1,0 +1,29 @@
+#!/bin/bash                                                                                                                            
+SESSION='default'                                                                                                                      
+                                                                                                                                       
+tmux -2 new-session -d -s $SESSION -n cluster                                                                                          
+
+tmux send-keys -t $SESSION:cluster 'bash' Enter
+tmux send-keys -t $SESSION:cluster 'sudo ssh -i ~/.ssh/google_compute_engine -L 8088:nelson-neto-exploration-m.c.maga-bigdata.internal:8088 nelson.neto@bastion-bigdata.gcp.luizalabs.com -N' Enter
+tmux split-window -v 'bash'
+tmux send-keys -t $SESSION:cluster 'sudo ssh -i ~/.ssh/google_compute_engine -L 8888:nelson-neto-exploration-m.c.maga-bigdata.internal:80 nelson.neto@bastion-bigdata.gcp.luizalabs.com -N' Enter
+
+tmux new-window -t $SESSION -a -n teresa 'bash'
+tmux send-keys -t $SESSION:teresa 'teresa app info ghostbuster' Enter
+tmux split-window -h 'bash'
+tmux send-keys -t $SESSION:teresa 'teresa app info ectomobile' Enter
+
+tmux new-window -t $SESSION -a -n general-purpose 'bash'
+tmux send-keys -t $SESSION:general-purpose 'sudo vpnc vpn-ML.conf' Enter
+tmux split-window -h 'bash'
+tmux send-keys -t $SESSION:general-purpose 'neofetch' Enter
+
+tmux new-window -t $SESSION -a -n dev 'bash'
+tmux send-keys -t $SESSION:dev 'cd ~/Documentos && ls -a' Enter
+
+tmux new-window -t $SESSION -a -n ide 'bash'
+tmux send-keys -t $SESSION:ide 'cd ~/Documentos && vim .' Enter
+
+tmux select-window -t $SESSION:2
+tmux select-pane -t 0
+tmux -2 attach -t $SESSION

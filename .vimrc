@@ -1,6 +1,9 @@
 filetype plugin indent on	        " required
 set nocompatible              	    " required
 filetype off                  	    " required
+set clipboard=unnamedplus           " Allow vim copy to clipboard and vice-versa
+" Remenber that vim has to have +clipboard (Check with :echo has('clipboard')
+" If aswer 0 have to install a version of vim that have
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim

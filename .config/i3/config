@@ -213,6 +213,6 @@ bar {
 
 # Startup programs
 # exec --no-startup-id autostart.sh 
-exec --no-startup-id compton --config ~/.config/compton/compton.conf
+#exec --no-startup-id compton --config ~/.config/compton/compton.conf
 exec --no-startup-id nitrogen --restore
 exec notify-send "Welcome back Nelson!"

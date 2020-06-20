@@ -31,3 +31,5 @@ urxvt.boldFont: xft:Fira Code Medium:size=13:weight=bold
 urxvt.letterSpace: -1
 !! Larger history limit
 urxvt.saveLines: 10000
+urxvt.iso14755: false
+urxvt.iso14755_52: false

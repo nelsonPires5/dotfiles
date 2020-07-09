@@ -19,34 +19,36 @@ call vundle#begin('~/.vim/plugins') "Path where Vundle should install plugins
 	Bundle 'Valloric/YouCompleteMe'
 
 	" Check the syntax in each save
-	Plugin 'vim-syntastic/syntastic'
+	" Plugin 'vim-syntastic/syntastic'
+	Plugin 'dense-analysis/ale'
+	
+	" Syntax highligh
+	Plugin 'sheerun/vim-polyglot'
 
 	" File browsing
 	Plugin 'scrooloose/nerdtree'
+
+	" Enable virtualenv
+	" Plugin 'jmcantrell/vim-virtualenv'
+	
+	" Enable git marks in each line
+	Plugin 'airblade/vim-gitgutter'
+
+	" Comment shortcut
+	Plugin 'scrooloose/nerdcommenter'
 
 	" Searching
 	" ctrl + p start the search
 	Plugin 'kien/ctrlp.vim'
     
-    " Plugin auto-pair brackets
-    Plugin 'jiangmiao/auto-pairs'
+	" Plugin auto-pair brackets
+	Plugin 'jiangmiao/auto-pairs'
 
 	" Using powerline statusbar
-	" Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-    Plugin 'powerline/powerline', {'rtp': 'powerline/powerline/bindings/vim/'}
+	Plugin 'powerline/powerline', {'rtp': 'powerline/powerline/bindings/vim/'}
 
-    " Dracula theme
-    Plugin 'dracula/vim', { 'name': 'dracula' }
-
-"python with virtualenv support
-"py << EOF
-"import os
-"import sys
-"if 'VIRTUAL_ENV' in os.environ:
-"    project_base_dir = os.environ['VIRTUAL_ENV']
-"    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-"    execfile(activate_this, dict(__file__=activate_this))
-"EOF
+	" Dracula theme
+	Plugin 'dracula/vim', { 'name': 'dracula' }
 
 " All of your Plugins must be added before the following line
 call vundle#end()                   " required
@@ -65,7 +67,7 @@ set noshowmode                      " Hide the default mode text (e.g. -- INSERT
 set t_Co=256                        " Use 256 colours
 
 " Syntax config
-let python_highlight_all=1
+" let python_highlight_all=1
 syntax on
 
 
@@ -84,8 +86,8 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 map <leader>f :NERDTreeToggle<CR>
 
 " Navigating in buffers
-map <leader>b :bn<CR>
-map <leader>B :bp<CR>
+map <leader>b :bn!<CR>
+map <leader>B :bp!<CR>
 nnoremap <silent><expr><leader>b printf(":\<C-U>%s\n", v:count ? 'buffer' . v:count : 'bnext')
 
 """"""""""""""""""""""
@@ -119,12 +121,17 @@ au BufNewFile,BufRead *.js, *.html, *.css
     \ set softtabstop=2
     \ set shiftwidth=2
 
-" Integrating with virtualenv
-" if 'VIRTUAL_ENV' in os.environ:
-"  project_base_dir = os.environ['VIRTUAL_ENV']
-"  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-"  execfile(activate_this, dict(__file__=activate_this))
-" endif
-
 " There is also a plugin called ftypes that will allow you to have a separate
 " file for each filetype you want to maintain settings for, so use that if you see fit.
+
+" Configuring ale
+"let g:ale_completion_enabled = 0 
+"let g:ale_fix_on_save = 0 
+"let g:ale_linters_explicit = 1
+"let b:ale_linters = ['flake8', 'pylint']
+"let g:ale_sign_error = '>>'
+"let g:ale_sign_warning = '--'
+"let g:ale_sign_column_always = 1
+"let g:ale_lint_on_text_changed = 'always'
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
